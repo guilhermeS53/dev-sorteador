@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(3, 3, 55, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h3 {
+  color: #ffffff;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 38px;
+  text-align: center;
+  margin: 126px 0 20px;
+}
+
+input {
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border-radius: 14px;
+  height: 64px;
+  width: 342px;
+  margin: 15px;
+  padding-left: 20px;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 47px;
+  opacity: 0.6;
+}
+
+input[type="number"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+button {
+  color: #ffffff;
+  background: #c41111;
+  margin: 39px 0 187px;
+  height: 64px;
+  width: 342px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 18px 40px 0px #c4111163;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 2.5px;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.6s ease-in-out;
+}
+
+button:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+button:active {
+  opacity: 0.95;
+}
+
+.logo-devsorteio {
+  height: 274px;
+  margin-top: 56px;
+}
+
+@media screen and (max-width: 768px) {
+  input {
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+  }
+
+  .logo-devsorteio {
+    height: 174px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  button {
+    font-size: 24px;
+    opacity: 0.95;
+  }
+}
