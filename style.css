@@ -19,6 +19,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  user-select: none;
+  overflow: hidden;
 }
 
 h3 {
