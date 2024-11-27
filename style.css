@@ -86,6 +86,7 @@ button:active {
 .logo-devsorteio {
   height: 274px;
   margin-top: 56px;
+  pointer-events: none;
 }
 
 .result {
