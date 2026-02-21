@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap");
+
+/* ================================================================
+   DESIGN TOKENS — Dark (default)
+   ================================================================ */
+:root {
+  --font: "DM Sans", system-ui, sans-serif;
+
+  /* backgrounds */
+  --bg-base: #0b1220;
+  --bg-surface: rgba(255, 255, 255, 0.04);
+  --bg-input: rgba(255, 255, 255, 0.06);
+
+  /* borders */
+  --border: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(96, 165, 250, 0.6);
+
+  /* text */
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+
+  /* accent — indigo→blue */
+  --accent-1: #6366f1;
+  --accent-2: #3b82f6;
+  --accent-grad: linear-gradient(135deg, #6366f1, #3b82f6);
+  --accent-shadow: rgba(99, 102, 241, 0.35);
+
+  /* result field */
+  --result-bg: rgba(0, 0, 0, 0.3);
+  --result-border: rgba(255, 255, 255, 0.06);
+
+  /* glow orbs */
+  --orb-1: rgba(99, 102, 241, 0.18);
+  --orb-2: rgba(59, 130, 246, 0.12);
+
+  /* transitions */
+  --t: 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ================================================================
+   DESIGN TOKENS — Light
+   ================================================================ */
+[data-theme="light"] {
+  --bg-base: #f1f5f9;
+  --bg-surface: rgba(255, 255, 255, 0.75);
+  --bg-input: rgba(255, 255, 255, 0.85);
+
+  --border: rgba(99, 102, 241, 0.15);
+  --border-focus: rgba(99, 102, 241, 0.6);
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+
+  --accent-1: #6366f1;
+  --accent-2: #3b82f6;
+  --accent-grad: linear-gradient(135deg, #6366f1, #3b82f6);
+  --accent-shadow: rgba(99, 102, 241, 0.25);
+
+  --result-bg: rgba(255, 255, 255, 0.9);
+  --result-border: rgba(99, 102, 241, 0.2);
+
+  --orb-1: rgba(99, 102, 241, 0.1);
+  --orb-2: rgba(59, 130, 246, 0.07);
+}
+
+/* ================================================================
+   RESET / BASE
+   ================================================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+html {
+  transition:
+    background-color var(--t),
+    color var(--t);
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================================================================
+   VIEW TRANSITIONS API — desabilita o fade padrão do browser
+   para deixar apenas nossa animação circular customizada
+   ================================================================ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
