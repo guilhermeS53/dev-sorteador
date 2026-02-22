@@ -146,20 +146,7 @@ onMounted(() => {
   <div class="orb orb-1" />
   <div class="orb orb-2" />
 
-  <!-- ── BOTÃO HAMBÚRGUER ── -->
-  <button
-    class="hamburger-btn"
-    :class="{ 'has-history': history.length > 0 }"
-    @click="menuOpen = !menuOpen"
-    :aria-label="menuOpen ? 'Fechar menu' : 'Abrir menu'"
-  >
-    <span class="bar" :class="{ open: menuOpen }" />
-    <span class="bar" :class="{ open: menuOpen }" />
-    <span class="bar" :class="{ open: menuOpen }" />
-    <span v-if="history.length > 0 && !menuOpen" class="hamburger-badge">
-      {{ history.length > 9 ? "9+" : history.length }}
-    </span>
-  </button>
+
 
   <!-- ── DRAWER LATERAL ── -->
   <Transition name="overlay">
@@ -168,7 +155,8 @@ onMounted(() => {
 
   <Transition name="drawer">
     <aside v-if="menuOpen" class="drawer">
-      <header class="drawer-header">
+      <!-- Não usar header -->
+      <!-- <header class="drawer-header">
         <button
           class="drawer-close-btn"
           @click="menuOpen = false"
@@ -188,7 +176,7 @@ onMounted(() => {
             <path d="M18 6L6 18M6 6l12 12" />
           </svg>
         </button>
-      </header>
+      </header> -->
 
       <!-- Toggle de tema -->
       <section class="drawer-section">
@@ -273,7 +261,7 @@ onMounted(() => {
             <rect x="16" y="16" width="6" height="6" rx="1" />
             <rect x="9" y="9" width="6" height="6" rx="1" />
           </svg>
-          <p>Nenhum sorteio ainda</p>
+          <p>Não há sorteios ainda</p>
         </div>
 
         <TransitionGroup
@@ -285,7 +273,7 @@ onMounted(() => {
           <li v-for="(item, i) in history" :key="i" class="history-item">
             <span class="history-result">{{ item.result }}</span>
             <div class="history-meta">
-              <span class="history-range">{{ item.min }} – {{ item.max }}</span>
+              <span class="history-range">{{ item.min }} a {{ item.max }}</span>
               <span class="history-time">{{ item.time }}</span>
             </div>
           </li>
@@ -296,6 +284,21 @@ onMounted(() => {
 
   <!-- ── CARD PRINCIPAL ── -->
   <div class="card">
+    <!-- ── BOTÃO HAMBÚRGUER (dentro do card) ── -->
+    <button
+      class="hamburger-btn"
+      :class="{ 'has-history': history.length > 0 }"
+      @click="menuOpen = !menuOpen"
+      :aria-label="menuOpen ? 'Fechar menu' : 'Abrir menu'"
+    >
+      <span class="bar" :class="{ open: menuOpen }" />
+      <span class="bar" :class="{ open: menuOpen }" />
+      <span class="bar" :class="{ open: menuOpen }" />
+      <span v-if="history.length > 0 && !menuOpen" class="hamburger-badge">
+        {{ history.length > 9 ? "9+" : history.length }}
+      </span>
+    </button>
+
     <div class="logo-wrap">
       <svg
         class="logo-svg"
@@ -387,8 +390,7 @@ onMounted(() => {
     </button>
 
     <p v-if="history.length" class="history-hint">
-      {{ history.length }} sorteio{{ history.length > 1 ? "s" : "" }} — veja o
-      histórico no menu ☰
+      <b>{{ history.length }} sorteio{{ history.length > 1 ? "s" : "" }}</b> realizado{{ history.length > 1 ? "s" : "" }}. Consulte o histórico no Menu ☰ acima.
     </p>
   </div>
 </template>
@@ -422,10 +424,10 @@ onMounted(() => {
    HAMBÚRGUER
 ───────────────────────────────────────── */
 .hamburger-btn {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 200;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 400;
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -445,7 +447,6 @@ onMounted(() => {
     box-shadow 0.3s ease,
     transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   will-change: transform;
-  position: relative;
 }
 /* quando tem histórico: borda com gradiente sutil */
 .hamburger-btn.has-history {
@@ -810,7 +811,8 @@ onMounted(() => {
 .card {
   position: relative;
   z-index: 10;
-  width: min(520px, 92vw);
+  width: 100%;
+  max-width: 520px;
   background: var(--bg-surface);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
